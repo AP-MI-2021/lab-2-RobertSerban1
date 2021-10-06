@@ -58,13 +58,30 @@ def test_get_newton_sqrt():
   print("Test sqrt of 4 with 1 aproximations")
   assert round(get_newton_sqrt(4, 1), 1) == 2.0
 
+def get_leap_years(start, end):
+    '''
+    afiseaza toti anii bisecti intre 2 ani dati.
+    :param start: primul an
+    :param end: al doilea an
+    :return: anii bisecti aflati intre cei doi ani introdusi, inclusiv.
+    '''
+    rezultat = []
+    for i in range(start, end + 1):
+        if i % 4 == 0:
+            rezultat.append(i)
+    return rezultat
+def test_get_leap_years():
+    assert get_leap_years(2015, 2021) == [2016, 2020]
+    assert get_leap_years(2001, 2003) == []
 def main():
     test_get_goldbach()
     test_get_newton_sqrt()
+    test_get_leap_years()
     while True:
         print("1. Afiseaza numerele prime care indeplinesc conditia.")
         print("2. Afiseaza radicalul numarului.")
-        print("3. Iesire")
+        print("3. Afiseaza anii bisecti dintre 2 numere date.")
+        print("4. Iesire")
         command = int(input("Introduceti optiunea:"))
         if command == 1:
             start = int(input("Numarul este: "))
@@ -74,5 +91,9 @@ def main():
             end = int(input("Numarul de aproximari: "))
             print("Radicalul numarului este ", get_newton_sqrt(start, end))
         elif command == 3:
+            start = int(input("Primul an este: "))
+            end = int(input("Al doilea an este: "))
+            print("Anii bisecti sunt ", get_leap_years(start, end))
+        elif command == 4:
             break
 main()
