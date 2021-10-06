@@ -96,4 +96,5 @@ def main():
             print("Anii bisecti sunt ", get_leap_years(start, end))
         elif command == 4:
             break
-main()
+if __name__ == '__main__':
+    main()
